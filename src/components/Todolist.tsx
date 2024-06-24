@@ -16,10 +16,11 @@ function Todolist() {
     function addNewTask()
     {
         const input: (HTMLInputElement | null) = document.querySelector('.task-input')
-        if(input != null)
+        if(input != null && input.value != "")
         {
             setItems([...items, input.value]);
         }
+        setValue("")
         setisTrue(true)
     }
 
@@ -27,7 +28,7 @@ function Todolist() {
     <div className="list-container">
         <div className="list">
             {items.map((element) => {
-                return <ListItem text={element}></ListItem>
+                return <ListItem text={element} items={items} setItems={setItems}></ListItem>
             })}
         </div>
         {isTrue && <button onClick={() => setisTrue(false)}>+ New Task</button>}
