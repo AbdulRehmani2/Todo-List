@@ -1,11 +1,23 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ListItem from "./ListItem"
 
 function Todolist() {
 
     const [isTrue, setisTrue] = useState(true)
-    const [items, setItems] = useState<string[]>(["Get some Apples"])
+    const [items, setItems] = useState<string[]>([])
     const [value, setValue] = useState("")
+
+    useEffect(() => {
+        const localItems = localStorage.getItem('list')
+        if(localItems)
+        {
+            setItems(JSON.parse(localItems))
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('list', JSON.stringify(items))
+    }, [items])
     
     function changeInputValue()
     {
@@ -18,7 +30,7 @@ function Todolist() {
         const input: (HTMLInputElement | null) = document.querySelector('.task-input')
         if(input != null && input.value != "")
         {
-            setItems([...items, input.value]);
+            !items.some(element => element == input.value) && setItems([...items, input.value])
         }
         setValue("")
         setisTrue(true)
@@ -28,7 +40,7 @@ function Todolist() {
     <div className="list-container">
         <div className="list">
             {items.map((element) => {
-                return <ListItem text={element} items={items} setItems={setItems}></ListItem>
+                return <ListItem key={element} text={element} items={items} setItems={setItems}></ListItem>
             })}
         </div>
         {isTrue && <button onClick={() => setisTrue(false)}>+ New Task</button>}

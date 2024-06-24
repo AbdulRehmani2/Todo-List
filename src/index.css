@@ -56,6 +56,8 @@ body{
   margin-top: 0.5rem;
   font-size: large;
   width: 15rem;
+  padding: 0.2rem 0.5rem;
+  border: 2px solid rgb(215, 215, 215);
 }
 
 .list{
