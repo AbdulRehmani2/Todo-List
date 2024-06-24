@@ -1,0 +1,74 @@
+body{
+  background-color: rgb(202, 244, 239);
+  font-family: "Poppins", sans-serif;
+}
+
+.list-container, .main-container, .item-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-container{
+  flex-direction: column;
+}
+
+.main-container>span{
+  background-color: rgb(95, 116, 212);
+  color: white;
+  width: 30rem;
+  padding: 0.7rem 0rem;
+  text-align: center;
+  margin: 1rem 0rem;
+  font-size: larger;
+}
+
+.list-container{
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0.1rem 0.1rem 0.2rem 0.1rem rgb(222, 222, 222),
+              -0.1rem -0.1rem 0.2rem 0.1rem rgb(222, 222, 222),
+              -0.1rem 0.1rem 0.2rem 0.1rem rgb(222, 222, 222),
+              0.1rem -0.1rem 0.2rem 0.1rem rgb(222, 222, 222);
+  width: 29.8rem;
+  padding: 1.5rem 0rem;
+}
+
+.list-container>button{
+  background-color: rgb(95, 116, 212);
+  color: white;
+  font-family: "Poppins";
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 0.6rem;
+}
+
+.list-container>button:hover{
+  background-color: rgb(65, 80, 142);
+}
+
+.list-container>button:active{
+  background-color: rgb(95, 116, 212);
+}
+
+.list-container>input{
+  margin-top: 0.5rem;
+  font-size: large;
+  width: 15rem;
+}
+
+.list{
+  max-height: 30rem;
+  overflow-y: auto;
+}
+
+.item-container{
+  padding: 0.5rem 0rem;
+}
+
+.item-container>span{
+  width: 16rem;
+  height: auto;
+  margin-left: 0.5rem;
+}
