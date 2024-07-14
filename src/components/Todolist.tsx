@@ -1,18 +1,31 @@
 import { useEffect, useState } from "react"
 import ListItem from "./ListItem"
 
+type data = {
+    id: number,
+    task: string
+}
+
 function Todolist() {
 
     const [isTrue, setisTrue] = useState(true)
     const [items, setItems] = useState<string[]>([])
     const [value, setValue] = useState("")
 
+    
+
     useEffect(() => {
-        const localItems = localStorage.getItem('list')
-        if(localItems)
+        function parseData(data: data[])
         {
-            setItems(JSON.parse(localItems))
+            const parsedData = data.map(element => element.task)
+            setItems([...parsedData])
         }
+
+        fetch("http://localhost:8000/list")
+        .then(res => res.json())
+            .then(result => parseData(result))
+            .catch(err => console.error(err))
+        .catch(err => console.error(err))
     }, [])
 
     useEffect(() => {
