@@ -21,29 +21,38 @@ function Todolist() {
             setItems([...parsedData])
         }
 
-        fetch("http://localhost:8000/list")
+        fetch("http://localhost:8000/list?_sort=id")
         .then(res => res.json())
             .then(result => parseData(result))
             .catch(err => console.error(err))
         .catch(err => console.error(err))
     }, [])
 
-    useEffect(() => {
-        localStorage.setItem('list', JSON.stringify(items))
-    }, [items])
-    
     function changeInputValue()
     {
         const input: (HTMLInputElement | null) = document.querySelector('.task-input')
         setValue(input == null ? "" : input.value);
     }
 
+    function addData(task: string)
+    {
+        fetch("http://localhost:8000/list", {
+            method: "POST",
+            headers: {
+                "Content-Type" : "applicaion/json"
+            },
+            body: JSON.stringify({task: task})
+        })
+        .then(res => res.json())
+            .then(result => setItems([result.task, ...items]))
+    }
+
     function addNewTask()
     {
-        const input: (HTMLInputElement | null) = document.querySelector('.task-input')
+        const input = document.querySelector<HTMLInputElement>('.task-input')
         if(input != null && input.value != "")
         {
-            !items.some(element => element == input.value) && setItems([...items, input.value])
+            addData(input.value)
         }
         setValue("")
         setisTrue(true)

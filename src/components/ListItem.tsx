@@ -10,10 +10,13 @@ function ListItem({ text, items, setItems }: ListItem)
 {
     const [isDone, setIsDone] = useState(false)
 
-    function removeItem()
+    async function removeItem()
     {
-        const newItems = items.filter((element) => {return element != text})
-        setItems(newItems)
+        const res = await fetch(`http://localhost:8000/list?task=${text}`)
+        const task = await res.json()
+        fetch(`http://localhost:8000/list/${task[0].id}`, {
+            method: "DELETE",
+        }).then(() => setItems(items.filter(element => element != task[0].task)))
     }
 
     return(
