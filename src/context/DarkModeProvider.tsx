@@ -1,9 +1,14 @@
 import { createContext, ReactElement, useState } from "react";
 
-export const DarkModeContext = createContext(null);
+export const DarkModeContext = createContext<ThemeType | null>(null);
 
 type Children = {
     children: ReactElement;
+}
+
+type ThemeType = {
+    dark: boolean,
+    setDark: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function DarkModeProvider({children}: Children)
@@ -15,4 +20,3 @@ export default function DarkModeProvider({children}: Children)
         </DarkModeContext.Provider>
     )
 }
-

@@ -59,10 +59,10 @@ function Todolist() {
         setisTrue(true)
     }
 
-    const {dark} = useContext(DarkModeContext)
+    const theme = useContext(DarkModeContext)
 
   return (
-    <div className={`list-container ${dark ? "dark" : ""}`}>
+    <div className={`list-container ${theme?.dark ? "dark" : ""}`}>
         <div className="list">
             {items.map((element) => {
                 return <ListItem key={element} text={element} items={items} setItems={setItems}></ListItem>

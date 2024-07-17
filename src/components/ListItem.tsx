@@ -11,7 +11,7 @@ interface ListItem{
 function ListItem({ text, items, setItems }: ListItem)
 {
     const [isDone, setIsDone] = useState(false)
-    const {dark} = useContext(DarkModeContext)
+    const theme = useContext(DarkModeContext)
 
     async function removeItem()
     {
@@ -26,7 +26,7 @@ function ListItem({ text, items, setItems }: ListItem)
         <div className="item-container">
             <input type="checkbox" name="isdone" id="isdone" onChange={() => setIsDone(prev => !prev)}/>
             <span>{text}</span>
-            <button className={`icon-button ${dark ? "dark" : ""} ${!isDone ? "hide" : ""}`} onClick={removeItem}><IoIosCloseCircleOutline/></button>
+            <button className={`icon-button ${theme?.dark ? "dark" : ""} ${!isDone ? "hide" : ""}`} onClick={removeItem}><IoIosCloseCircleOutline/></button>
         </div>
     )
 }

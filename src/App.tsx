@@ -5,13 +5,13 @@ import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
 
 function App() {
 
-  const {dark, setDark} = useContext(DarkModeContext);
+  const theme = useContext(DarkModeContext);
 
   return (
     <div className="main-container">
         
         <div className={`title-container`}>
-          <button className="icon-container" onClick={() => setDark(prev => !prev)}>{dark ? <MdOutlineDarkMode/> : <MdDarkMode/>}</button>
+          <button className="icon-container" onClick={() => theme?.setDark(prev => !prev)}>{theme?.dark ? <MdOutlineDarkMode/> : <MdDarkMode/>}</button>
           <span>To-do List</span>
         </div>
 		    <Todolist></Todolist>
