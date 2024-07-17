@@ -1,10 +1,6 @@
 {
   "list": [
     {
-      "id": "1",
-      "task": "Install Antivirus"
-    },
-    {
       "id": "2",
       "task": "Run Antivirus"
     },
@@ -15,6 +11,10 @@
     {
       "id": "cac2",
       "task": "Task is complete"
+    },
+    {
+      "id": "a018",
+      "task": "Test"
     }
   ]
 }

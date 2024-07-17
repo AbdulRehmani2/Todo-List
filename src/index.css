@@ -13,14 +13,47 @@ body{
   flex-direction: column;
 }
 
-.main-container>span{
+.title-container{
   background-color: rgb(95, 116, 212);
   color: white;
-  width: 30rem;
-  padding: 0.7rem 0rem;
-  text-align: center;
+  width: 28rem;
+  padding: 0.7rem 1rem;
   margin: 1rem 0rem;
   font-size: larger;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4rem;
+}
+
+.title-container>span{
+  grid-column: span 2;
+}
+
+.icon-container{
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.icon-container>*, .icon-button{
+  height: 1.5rem;
+  width: auto;
+}
+
+.icon-button{
+  background-color: transparent;
+  border: none;
+}
+
+.icon-button.dark{
+  color: white;
+}
+
+.icon-button>*{
+  height: 1.1rem;
+  width: auto;
 }
 
 .list-container{
@@ -32,6 +65,11 @@ body{
               0.1rem -0.1rem 0.2rem 0.1rem rgb(222, 222, 222);
   width: 29.8rem;
   padding: 1.5rem 0rem;
+}
+
+.list-container.dark{
+  background-color: rgb(63, 63, 63);
+  color: white;
 }
 
 .list-container>button{

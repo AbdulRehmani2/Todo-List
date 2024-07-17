@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import ListItem from "./ListItem"
+import { DarkModeContext } from "../context/DarkModeProvider"
 
 type data = {
     id: number,
@@ -58,8 +59,10 @@ function Todolist() {
         setisTrue(true)
     }
 
+    const {dark} = useContext(DarkModeContext)
+
   return (
-    <div className="list-container">
+    <div className={`list-container ${dark ? "dark" : ""}`}>
         <div className="list">
             {items.map((element) => {
                 return <ListItem key={element} text={element} items={items} setItems={setItems}></ListItem>
